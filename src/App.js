@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import './App.css';
-import { SvgCreate, SvgDelete, SvgEdit, SvgEllipses, SvgPlus, SvgBack } from './iconComponents/SVGIcons';
+import { SvgDelete, SvgEdit, SvgEllipses, SvgPlus, SvgBack } from './iconComponents/SVGIcons';
 import avatar from './icons/avatar.png';
+import CreateIcon from './icons/createIcon.svg';
+import BackIcon from './icons/backIcon.svg';
+import EllipseIcon from './icons/ellipsesIcon.svg';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -22,16 +25,12 @@ function App() {
   const RenderEmptyState = (props) => {
     console.log('empty', todos)
     return(
-      <table>
-        <tr>
-        <td onClick={() => props.setIsLanding(false)} className="Item-Container">
-          <h3 className = "Item-Title-Box">
-            Create a list
-          </h3> 
-          <div className="plusLogo"><SvgPlus/></div>
-        </td>
-      </tr>
-    </table>
+      <div onClick={() => props.setIsLanding(false)} className="Item-Container">
+        <div className="createlist"> 
+          Create a list
+        </div> 
+        <div className="plusLogo"><SvgPlus/></div>
+      </div>
     )
   }
 
@@ -39,30 +38,38 @@ function App() {
     return (
       <div className="List-Container">
       <div className="Header-Container">
-        <h1 className="Header-Title"><img src={avatar} className="avatar"/>Lists</h1>
-        <button className="createBtn" onClick={() => setIsLanding(false)}> 
-          <SvgCreate/>
-        </button>
+        <div className="Header-Title">
+          <div>
+            <img src={avatar} className="avatar"/>
+          </div>
+          <div className="Header-Text">
+            <div>Lists</div>
+          </div>
+        </div>
+        <div>
+          <button className="createBtn" onClick={() => setIsLanding(false)}> 
+            <img src={CreateIcon} alt="Create Icon" />
+          </button>
+        </div>
+
       </div>
       <div>
         {todos.length < 1 ? (
-          <div>
+          <>
             <RenderEmptyState setIsLanding={setIsLanding}/>
-          </div>
+          </>
         ):(
           <div>
-            <table>
-              {todos.map((todo, idx) => {
-                return (
-                  <tr>
-                    <td className="Item-Container">
-                      <div className="Item-Title-Box">
+            {todos.map((todo, idx) => {
+              return (
+                <div className="Item-Container">
+                  <div className="Item-Title-Box">
                         <h3>{todo.name}</h3>
                       </div>
                       <div className="dropdown">
-                        <button>
-                          <SvgEllipses/>
-                        </button>
+                        <div>
+                          <img src={EllipseIcon} className="ellipseIcon"/>
+                        </div>
                         <div className="dropdown-content">
                           <button onClick={() =>editToDo(todo.name, idx)}>
                             <SvgEdit/> Edit
@@ -72,11 +79,9 @@ function App() {
                           </button>
                         </div>
                       </div>
-                    </td>
-                  </tr>
-                );
-              })}
-            </table>
+                </div>  
+              );
+            })}
           </div>
         )}
       </div>
@@ -101,21 +106,17 @@ function App() {
   const renderToDoDetailPage = () => {
     return (
       <>
-        <div style={{ display: 'flex'}}>
-          <div>
-            <button  onClick={() => setIsLanding(true)}>
-            {/* <SvgBack/> */}
-            <h3 className="Cancel">Cancel</h3>
-            </button>
+        <div className="modifyContainer">
+          <div className="leftHeader">
+            <div className="cancel" onClick={() => setIsLanding(true)}>
+              <img src={BackIcon} className="backIcon" />
+              <div className="createText">Cancel</div>
+            </div>
+            <div className="Done" onClick={() => { title.length ? selectedIdx === -1 ? addToList() : editToList(): setIsLanding(true)}}>
+              <div className="createText">Done</div>
+            </div>
           </div>
-          <div>
-            <button  onClick={() => { title.length ? selectedIdx === -1 ? addToList() : editToList(): setIsLanding(true)}}>
-              <h3 className="Done">Done</h3>
-            </button>
-          </div>
-        </div>
-        <div>
-          <input type="text" value={title} placeholder="List title"  onChange={e => setTitle(e.target.value)} />
+          <input className="createInput" type="text" value={title} placeholder="List title"  onChange={e => setTitle(e.target.value)} />
         </div>
       </>
     )
