@@ -39,10 +39,10 @@
 .createlist {
   display:flex;
   align-items: center;
-  font-family: 'Inter';
   font-style: normal;
-font-weight: 600;
-font-size: 20px;
+  font-weight: 600;
+  font-size: 20px;
+  padding-left:16px;
 }
 
 .Item-Container{
@@ -66,6 +66,7 @@ font-size: 20px;
 }
 .plusLogo{
   padding-right:16px;
+  padding-left:16px;
   display: flex;
   align-items: center;
 }
@@ -80,6 +81,7 @@ font-size: 20px;
   width: 18px;
   height: 18px;
   object-fit: cover;
+  padding-right:4px;
 }
 
 .createInput {
@@ -103,8 +105,7 @@ input{
 
 .modifyContainer {
   margin-top: 32px;
-
-  margin-left: 48px;
+  margin-left: 40px;
 }
 
 .leftHeader {
@@ -123,7 +124,7 @@ input{
   font-size: 20px;
 }
 .Done{
-  margin-right:48px;
+  margin-right:40px;
   cursor: pointer;
 }
 .dropdown {
