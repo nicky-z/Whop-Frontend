@@ -1,18 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './App.css';
-import { SvgDelete, SvgEdit, SvgEllipses, SvgPlus, SvgBack } from './iconComponents/SVGIcons';
 import avatar from './icons/avatar.png';
 import CreateIcon from './icons/createIcon.svg';
 import BackIcon from './icons/backIcon.svg';
 import EllipseIcon from './icons/ellipsesIcon.svg';
+import DeleteIcon from './icons/deleteIcon.svg';
+import EditIcon from './icons/editIcon.svg';
+import PlusIcon from './icons/plusIcon.svg';
 
 function App() {
   const [todos, setTodos] = useState([]);
   const [isLanding, setIsLanding] = useState(true);
   const [title, setTitle] = useState('');
   const [selectedIdx, setSelectedIdx] = useState(-1);
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const refs = useRef([]);
+
+  const clickOutside = (e) => {
+    if(refs.current[selectedIdx].contains(e.target)){
+      setShowDropdown(true);
+      return;
+    }
+    setShowDropdown(false);
+  }
+
+  useEffect(() => {
+    document.addEventListener('mousedown', clickOutside);
+
+    // clean up function before running new effect
+    return () => {
+        document.removeEventListener('mousedown', clickOutside);
+    }
+  }, [selectedIdx]);
 
   const editToDo = (name, idx) => {
+    console.log("name: ", name);
     setTitle(name);
     setSelectedIdx(idx);
     setIsLanding(false);
@@ -26,10 +49,10 @@ function App() {
     console.log('empty', todos)
     return(
       <div onClick={() => props.setIsLanding(false)} className="Item-Container">
-        <div className="createlist"> 
+        <div className="createalist"> 
           Create a list
         </div> 
-        <div className="plusLogo"><SvgPlus/></div>
+        <div className="plusLogo"><img src={PlusIcon}/></div>
       </div>
     )
   }
@@ -62,24 +85,30 @@ function App() {
           <div>
             {todos.map((todo, idx) => {
               return (
-                <div className="Item-Container">
-                  <div className="Item-Title-Box">
-                        <h3>{todo.name}</h3>
+                <>
+                  <div className="Item-Container">
+                    <div className="Item-Title-Box">
+                      <h3>{todo.name}</h3>
+                    </div>
+                    <div className="dropdown" onClick={() => {
+                      setSelectedIdx(idx);
+                    }} ref={(element) => {refs.current[idx] = element; }}>
+                      <div>
+                        <img src={EllipseIcon} className="ellipseIcon"/>
                       </div>
-                      <div className="dropdown">
-                        <div>
-                          <img src={EllipseIcon} className="ellipseIcon"/>
-                        </div>
-                        <div className="dropdown-content">
-                          <button onClick={() =>editToDo(todo.name, idx)}>
-                            <SvgEdit/> Edit
-                          </button>
-                          <button onClick={() =>deleteToDo(idx)}>
-                             <SvgDelete/> Delete
-                          </button>
-                        </div>
+                    </div>
+                  </div>
+                  {showDropdown && (idx === selectedIdx) && (
+                    <div className="dropdown-content">
+                      <div className="editBtn" onClick={() =>editToDo(todo.name, idx)}>
+                        <img src={EditIcon} className="editIcon"/> Edit
                       </div>
-                </div>  
+                      <div className="deleteBtn" onClick={() =>deleteToDo(idx)}>
+                        <img src={DeleteIcon} className="deleteIcon"/> Delete
+                      </div>
+                    </div>
+                  )}
+                </>
               );
             })}
           </div>
@@ -112,11 +141,12 @@ function App() {
               <img src={BackIcon} className="backIcon" />
               <div className="createText">Cancel</div>
             </div>
-            <div className="Done" onClick={() => { title.length ? selectedIdx === -1 ? addToList() : editToList(): setIsLanding(true)}}>
+            <div className="done" onClick={() => { title.length ? selectedIdx === -1 ? addToList() : editToList(): setIsLanding(true)}}>
               <div className="createText">Done</div>
             </div>
           </div>
-          <input className="createInput" type="text" value={title} placeholder="List title"  onChange={e => setTitle(e.target.value)} />
+          {/* <input className="createInput" type="text" value={title} placeholder="List title"  onChange={e => setTitle(e.target.value)} /> */}
+          <textarea className="textbox" value={title} placeholder= "List title" onChange={e => setTitle(e.target.value)}></textarea>
         </div>
       </>
     )

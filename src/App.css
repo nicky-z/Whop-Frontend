@@ -33,10 +33,24 @@
   margin-right:16px;
 }
 .createBtn{
-  padding-right:40px;
+  margin-right:40px;
+  width:40px;
+  height:40px;
+  border-radius: 4px;
+  color: #242424;
+  border:none;
+  background-color: white;
+  cursor: pointer;
+}
+.createBtn:hover{
+  background-color: #F4F4F4;
+}
+.createBtn:active{
+  background-color: #F4F4F4;
+  color:#2FE6FF /*not working*/
 }
 
-.createlist {
+.createalist {
   display:flex;
   align-items: center;
   font-style: normal;
@@ -50,16 +64,13 @@
   justify-content: space-between;
   width: 95%;
   height: 60px;
-  /* my code
-  border-width:1px;
-  border-style:solid;
-  border-color:rgb(218, 214, 214);
-  border-radius: 8px; */
   border: 0.75px solid #ECECEC;
   box-sizing: border-box;
   border-radius: 8px;
+  margin-bottom:16px;
 }
 .Item-Title-Box {
+  margin-left:16px;
   white-space: nowrap;
   overflow:hidden;
   text-overflow: ellipsis;
@@ -75,8 +86,28 @@
 }
 .Item-Container:active{
   background: #F4F4F4;
-
 }
+
+/* .createInput {
+  width: 90%;
+} */
+
+textarea{
+  line-height:26px; /*not working!*/
+}
+
+.textbox{ /*need to add margins inside of this text box*/
+  caret-color: rgb(46, 205, 233);
+  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border:none; 
+  width:90%;
+  height:500px;
+  outline:none;
+  font-size:28px;
+  font-weight: 600;
+  color: #242424;
+}
+
 .backIcon {
   width: 18px;
   height: 18px;
@@ -84,23 +115,25 @@
   padding-right:4px;
 }
 
-.createInput {
-  width: 90%;
-}
-
-input{
-  caret-color: rgb(46, 205, 233);
-  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  border:none;
-  outline:none;
-  font-size:larger;
-  font-weight: 600;
-
-}
 .cancel{
   display: flex;
   cursor: pointer;
   align-items: center;
+}
+
+.done{
+  margin-right:40px;
+  cursor: pointer;
+}
+
+.done, .cancel, .backicon {
+  color: #505050;
+}
+.done:hover, .cancel:hover, .backicon:hover{
+  color:#242424;
+}
+.done:active, .cancel:active, .backicon:active{
+  color: #2FE6FF;
 }
 
 .modifyContainer {
@@ -118,70 +151,88 @@ input{
 .createText {
   font-size: 20px;
   font-weight: 600;
+   /*added default color*/
 }
 
-.backLogo{
-  font-size: 20px;
-}
-.Done{
-  margin-right:40px;
-  cursor: pointer;
-}
 .dropdown {
-  align-items:center;
   position:relative;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.ellipsesBtn {
-  padding:8px;
-  background-color: white;
-  color: black;
-  font-size: 16px;
-  border-radius: 6px;
+.ellipseIcon{
+  padding-left:16px;
+  padding-right:16px;
 }
 
-.dropdown:hover .ellipsesBtn {
-  background-color: #f1f1f1;
+.ellipseIcon:hover {
+  background-color: #F4F4F4;
+}
+
+.ellipseIcon:active{
+  background-color: #F4F4F4;
+  color:#2FE6FF
 }
 
 .dropdown-content {
-  display: none;
   background-color: white;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-  border-radius: 6px;
-  position:absolute;
-}
-.dropdown:hover .dropdown-content {
-  display:block;
+  position: absolute;
+  left:85%;
+  
 }
 
-.dropdown-content button {
-  color: black;
-  text-decoration: none;
-  min-width: 100px;
-  min-height: 50px;
-  border-radius: 6px;
-}
-.dropdown-content button:hover {background-color: #f1f1f1}
+.editBtn{
+  color: #242424;
+  display:flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  padding-right:16px;
+  border-radius:6px;
+} 
 
-.editLogo{
-  height:16px;
-  stroke-width: 0.5;
-  float:left;
-  padding-left:16px;
-  padding-right:0px;
+.deleteBtn {
+  color: #242424;
+  display:flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  padding-right:16px;
+  border-radius:6px;
 }
 
-.deleteLogo{
-  stroke-width: 0.5;
-  float:left;
-  padding-left:16px;
+.editIcon{
+  height:18px;
+  width:18px;
+  margin-left:16px;
+  margin-right:8px;
+  margin-top:16px;
+  margin-bottom:16px;
 }
 
-button{
-  border:none;
-  background-color: white;
-  cursor: pointer;
+.deleteIcon{
+  height:18px;
+  width:18px;
+  margin-left:16px;
+  margin-right:8px;
+  margin-top:16px;
+  margin-bottom:16px;
 }
-button:active {color:rgb(46, 205, 233)}
+
+.editBtn:hover, .deleteBtn:hover{
+  background-color: #F4F4F4;
+}
+
+.editBtn:active { /*not working*/
+  background-color: #F4F4F4;
+  color:#2FE6FF 
+}
+
+.deleteBtn:active{
+  background-color: #F4F4F4;
+  color:#FF3333;
+}
