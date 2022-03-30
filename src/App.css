@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+
 .List-Container {
   background-color:white;
   text-align: left;
@@ -21,8 +24,11 @@
 .Header-Text {
   display: flex;
   align-items: center;
-  font-size: 24px;
-  font-weight: bold;
+  font-family:'Inter';
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  letter-spacing: -0.03em;
 }
 
 .avatar{
@@ -38,24 +44,26 @@
   height:40px;
   border-radius: 4px;
   color: #242424;
-  border:none;
-  background-color: white;
-  cursor: pointer;
 }
+
 .createBtn:hover{
   background-color: #F4F4F4;
 }
+
 .createBtn:active{
   background-color: #F4F4F4;
-  color:#2FE6FF /*not working*/
+  fill:#2FE6FF;
 }
 
 .createalist {
   display:flex;
   align-items: center;
   font-style: normal;
+  font-family:'Inter';
   font-weight: 600;
   font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.005em;
   padding-left:16px;
 }
 
@@ -68,72 +76,106 @@
   box-sizing: border-box;
   border-radius: 8px;
   margin-bottom:16px;
+  min-width:0;
 }
+
 .Item-Title-Box {
+  width: calc(80%);
   margin-left:16px;
+  align-items: center;
+  display:flex;
+  font-family:'Inter';
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.005em;
   white-space: nowrap;
   overflow:hidden;
   text-overflow: ellipsis;
 }
+
 .plusLogo{
   padding-right:16px;
   padding-left:16px;
   display: flex;
   align-items: center;
 }
+
 .Item-Container:hover{
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.08);
 }
+
 .Item-Container:active{
   background: #F4F4F4;
 }
 
-/* .createInput {
-  width: 90%;
-} */
-
-textarea{
-  line-height:26px; /*not working!*/
+.Item-Container:active .ellipseIcon{
+  background: #F4F4F4;
 }
 
-.textbox{ /*need to add margins inside of this text box*/
-  caret-color: rgb(46, 205, 233);
-  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+.textbox{ 
+  caret-color:#2FE6FF;
+  font-family:'Inter';
   border:none; 
+  outline:none;
   width:90%;
   height:500px;
-  outline:none;
   font-size:28px;
   font-weight: 600;
+  letter-spacing: -0.01em;
   color: #242424;
+  line-height:193%;
 }
-
+::placeholder{
+  opacity:0.2;
+}
 .backIcon {
   width: 18px;
   height: 18px;
   object-fit: cover;
   padding-right:4px;
+  filter: invert(27%) sepia(0%) saturate(1095%) hue-rotate(151deg) brightness(104%) contrast(84%);
 }
-
 .cancel{
+  color: #505050;
   display: flex;
   cursor: pointer;
   align-items: center;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
 }
 
 .done{
+  color: #505050;
   margin-right:40px;
   cursor: pointer;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  
 }
 
-.done, .cancel, .backicon {
-  color: #505050;
-}
-.done:hover, .cancel:hover, .backicon:hover{
+.done:hover, .cancel:hover{
   color:#242424;
 }
-.done:active, .cancel:active, .backicon:active{
+.done:active{
   color: #2FE6FF;
+}
+.cancel:active{
+  color: #2FE6FF;
+}
+
+.cancel:hover .backIcon{
+  filter: invert(0%) sepia(0%) saturate(1513%) hue-rotate(203deg) brightness(96%) contrast(72%)
+}
+
+.cancel:active .backIcon{
+  filter: invert(87%) sepia(17%) saturate(7459%) hue-rotate(151deg) brightness(102%) contrast(101%);
 }
 
 .modifyContainer {
@@ -160,9 +202,13 @@ textarea{
   flex-direction: column;
   justify-content: center;
 }
+
 .ellipseIcon{
-  padding-left:16px;
-  padding-right:16px;
+  margin-left:16px;
+  margin-right:16px;
+  height:32px;
+  width:32px;
+  border-radius:4px;
 }
 
 .ellipseIcon:hover {
@@ -171,7 +217,7 @@ textarea{
 
 .ellipseIcon:active{
   background-color: #F4F4F4;
-  color:#2FE6FF
+  fill:#2FE6FF;
 }
 
 .dropdown-content {
@@ -179,8 +225,9 @@ textarea{
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   position: absolute;
-  left:85%;
-  
+  border-radius:8px;
+  left:75%;
+
 }
 
 .editBtn{
@@ -191,7 +238,7 @@ textarea{
   font-size: 18px;
   line-height: 22px;
   padding-right:16px;
-  border-radius:6px;
+  border-radius:8px;
 } 
 
 .deleteBtn {
@@ -202,7 +249,7 @@ textarea{
   font-size: 18px;
   line-height: 22px;
   padding-right:16px;
-  border-radius:6px;
+  border-radius:8px;
 }
 
 .editIcon{
@@ -227,12 +274,26 @@ textarea{
   background-color: #F4F4F4;
 }
 
-.editBtn:active { /*not working*/
+.editBtn:active { 
   background-color: #F4F4F4;
   color:#2FE6FF 
+}
+
+.editBtn:active .editIcon{
+  filter: invert(87%) sepia(17%) saturate(7459%) hue-rotate(151deg) brightness(102%) contrast(101%);
 }
 
 .deleteBtn:active{
   background-color: #F4F4F4;
   color:#FF3333;
+}
+
+.deleteBtn:active .deleteIcon{
+  filter: invert(26%) sepia(62%) saturate(3442%) hue-rotate(346deg) brightness(104%) contrast(107%);
+}
+
+button{
+  border:none;
+  background-color: white;
+  cursor: pointer;
 }
