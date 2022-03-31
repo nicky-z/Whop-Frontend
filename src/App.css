@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
 
-
 .List-Container {
   background-color:white;
   text-align: left;
@@ -191,11 +190,6 @@
   justify-content: space-between;
   margin-bottom: 24px;
 }
-
-/* .createText {
-  font-size: 20px;
-  font-weight: 600;
-} */
 
 .dropdown {
   position:relative;
