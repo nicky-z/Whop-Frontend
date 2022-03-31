@@ -39,7 +39,6 @@
   margin-right:16px;
 }
 .createBtn{
-  /* margin-right:40px; */
   width:40px;
   height:40px;
   border-radius: 4px;
@@ -120,7 +119,7 @@
   font-family:'Inter';
   border:none; 
   outline:none;
-  width:100%;
+  width:95%;
   height:500px;
   font-size:28px;
   font-weight: 600;
