@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
 
+
 .List-Container {
   background-color:white;
   text-align: left;
@@ -11,7 +12,6 @@
 }
 .Header-Container{
   display:flex;
-  /*width: 619px;*/
   width: 100%;
   height:96px;
   align-items: center;
@@ -71,12 +71,17 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 960px;
   height: 60px;
   border: 0.75px solid #ECECEC;
   box-sizing: border-box;
   border-radius: 8px;
   margin-bottom:16px;
+}
+
+.Item-Title {
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
 }
 
 .Item-Title-Box {
@@ -88,9 +93,7 @@
   font-size: 20px;
   line-height: 24px;
   letter-spacing: -0.005em;
-  white-space: nowrap;
-  overflow:hidden;
-  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .plusLogo{
@@ -117,7 +120,7 @@
   font-family:'Inter';
   border:none; 
   outline:none;
-  width:90%;
+  width:100%;
   height:500px;
   font-size:28px;
   font-weight: 600;
@@ -193,7 +196,6 @@
 /* .createText {
   font-size: 20px;
   font-weight: 600;
-  
 } */
 
 .dropdown {
@@ -204,8 +206,6 @@
 }
 
 .ellipseIcon{
-  /* margin-left:16px;
-  margin-right:16px; */
   padding-right:16px;
   border-radius:4px;
 }
@@ -224,45 +224,15 @@
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 
 }
-/* 
-.editBtn{
-  color: #242424;
-  display:flex;
-  align-items: center;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 22px;
-  padding-right:16px;
-  border-radius:8px;
-} 
-
-.deleteBtn {
-  color: #242424;
-  display:flex;
-  align-items: center;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 22px;
-  padding-right:16px;
-  border-radius:8px;
-} */
 
 .editIcon{
   height:18px;
   width:18px;
-  /* margin-left:16px;
-  margin-right:8px;
-  margin-top:16px;
-  margin-bottom:16px; */
 }
 
 .deleteIcon{
   height:18px;
   width:18px;
-  /* margin-left:16px;
-  margin-right:8px;
-  margin-top:16px;
-  margin-bottom:16px; */
 }
 
 .editBtn:hover, .deleteBtn:hover{
@@ -301,5 +271,21 @@ button{
   .modifyContainer{
     margin-left:24px;
     margin-right:24px;
+  }
+}
+
+@media screen and (min-width: 1040px){
+  .Items-List{
+    display: flex;
+    align-items: center;
+    flex-direction:column;
+  }
+  .Item-Container {
+    max-width: 960px;
+  }
+
+  .empty-container {
+    display: flex;
+    justify-content: center;
   }
 }
